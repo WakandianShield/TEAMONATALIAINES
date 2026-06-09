@@ -47,7 +47,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
-    scrollbar-color: #00f2ff rgba(255, 255, 255, 0.1);
+    scrollbar-color: transparent transparent;
     flex-wrap: nowrap;
 }
 
@@ -930,4 +930,66 @@ body {
 
 .texto-carta::placeholder {
     color: rgba(61, 43, 31, 0.4);
+}
+
+@media (max-width: 1024px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+        padding: 1rem;
+    }
+    .seccion-estante {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .estante {
+        flex-direction: row;
+        height: auto;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 1rem;
+    }
+    .ranura-album {
+        transform: none;
+    }
+    .ranura-album.activo, .ranura-album:hover {
+        transform: scale(1.05);
+    }
+    .escritorio {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 2rem 1rem;
+        margin-right: 0;
+        align-items: center;
+        gap: 2rem;
+    }
+    .ipod {
+        transform: scale(0.85);
+        margin: -40px 0;
+    }
+    .carta-contenedor {
+        width: 100%;
+        height: auto;
+    }
+    .hoja-papel {
+        transform: none;
+        height: 600px;
+        padding: 40px 20px 40px 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .flower {
+        display: none;
+    }
+    .ipod {
+        transform: scale(0.75);
+        margin: -80px 0;
+    }
+    .texto-carta {
+        font-size: 1.4rem;
+    }
 }
