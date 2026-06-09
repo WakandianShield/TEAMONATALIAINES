@@ -1,6 +1,6 @@
 const ALBUMS = [
     {
-        name: "SECRETOS ",
+        name: "Secretos",
         artist: "Jose Jose",
         cover: "josejose.jpg",
         vinylImg: "vinyl1.png",
