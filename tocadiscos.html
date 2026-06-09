@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Colección de Vinilos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Reproductor
+        de vinilos interactivo — selecciona un álbum y presiona play</h2>
+
+    <div class="seccion-estante">
+        <div class="estante" id="estanteAlbum" role="list" aria-label="Colección de álbumes">
+        </div>
+    </div>
+
+    <div class="escritorio">
+        <div class="ipod-container">
+            <div class="ipod">
+                <div class="ipod-screen">
+                    <div class="screen-header">
+                        <span class="play-state">▶</span>
+                        <span class="menu-title">Ahora suena</span>
+                        <span class="battery">🔋</span>
+                    </div>
+
+                    <div class="now-playing-ipod">
+                        <div class="ipod-album-art">
+                            <img id="imgVinilo" src="placeholder.png" alt="Album Art" />
+                        </div>
+                        <div class="ipod-info">
+                            <h2 id="tituloActual" class="ipod-title">Elige un álbum</h2>
+                            <p id="artistaActual" class="ipod-artist"></p>
+                        </div>
+                    </div>
+
+                    <div class="ipod-progress-section">
+                        <div class="fondo-progreso" id="fondoProgreso">
+                            <div class="relleno-progreso" id="rellenoProgreso"></div>
+                        </div>
+                        <div class="tiempos-progreso">
+                            <span id="tiempoTranscurrido">0:00</span>
+                            <span id="duracionTiempo">0:00</span>
+                        </div>
+                    </div>
+
+                    <ul class="ipod-tracklist" id="listaPistas">
+                    </ul>
+                </div>
+
+                <div class="click-wheel">
+                    <button class="wheel-btn menu-btn">MENU</button>
+                    <button class="wheel-btn prev-btn">⏮</button>
+                    <button class="wheel-btn next-btn">⏭</button>
+                    <button class="wheel-btn play-pause-btn" id="btnReproducir">▶||</button>
+                    <div class="center-btn" id="btnDetener"></div>
+                </div>
+            </div>
+            <div class="ipod-volume-container">
+                <input type="range" class="deslizador-volumen" id="deslizadorVolumen" min="0" max="1" step="0.01"
+                    value="0.8">
+            </div>
+        </div>
+
+        <div class="carta-contenedor">
+            <div class="hoja-papel">
+                <div class="texto-carta">
+                    Querida Natalia,
+                    Aquí puedes escribir todo lo que sientes por ella. El texto ahora es estático y luce mucho más
+                    grande y bonito.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flowers-layer">
+        <img src="rose.png" class="flower flower-7" alt="rosa">
+        <img src="flowers.png" class="flower flower-8" alt="flores">
+        <img src="flower.png" class="flower flower-9" alt="flor">
+        <img src="flowers-2.png" class="flower flower-10" alt="flor">
+        <img src="rose.png" class="flower flower-11" alt="rosa">
+        <img src="flowers.png" class="flower flower-12" alt="flores">
+        <img src="flower.png" class="flower flower-13" alt="flor">
+        <img src="flowers-2.png" class="flower flower-14" alt="flor">
+        <img src="rose.png" class="flower flower-15" alt="rosa">
+        <img src="flowers.png" class="flower flower-16" alt="flores">
+        <img src="flower.png" class="flower flower-17" alt="flor">
+        <img src="flowers-2.png" class="flower flower-18" alt="flor">
+        <img src="rose.png" class="flower flower-19" alt="rosa">
+        <img src="flowers.png" class="flower flower-20" alt="flores">
+        <img src="flower.png" class="flower flower-21" alt="flor">
+        <img src="flowers-2.png" class="flower flower-22" alt="flor">
+        <img src="rose.png" class="flower flower-23" alt="rosa">
+        <img src="flowers.png" class="flower flower-24" alt="flores">
+        <img src="flower.png" class="flower flower-25" alt="flor">
+        <img src="flowers-2.png" class="flower flower-26" alt="flor">
+        <img src="rose.png" class="flower flower-27" alt="rosa">
+        <img src="flowers.png" class="flower flower-28" alt="flores">
+        <img src="flower.png" class="flower flower-29" alt="flor">
+        <img src="flowers-2.png" class="flower flower-30" alt="flor">
+        <img src="rose.png" class="flower flower-31" alt="rosa">
+        <img src="flowers.png" class="flower flower-32" alt="flores">
+    </div>
+
+    <audio id="reproductorAudio" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
