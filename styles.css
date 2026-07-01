@@ -27,25 +27,30 @@ body {
 }
 
 .welcome-card {
-    background: radial-gradient(circle, rgba(255, 50, 50, 0.8) 0%, rgba(200, 0, 0, 0.6) 100%);
-    padding: 2rem;
-    width: min(85vw, 400px);
+    background-image: url('corazon.gif');
+    background-size: cover;
+    padding: 5rem;
+    width: 25vw;
     aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     clip-path: url(#heart-clip);
     text-decoration: none;
-    animation: cardEntry 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.4s ease;
+    transition: transform 0.4s ease;
     cursor: pointer;
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
     border: none;
 }
+
+.welcome-card:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 30px rgb(114, 0, 0));
+    background-image: url('corazon.gif');
+}
+
+
 
 @keyframes cardEntry {
     from {
@@ -62,19 +67,14 @@ body {
 h1 {
     font-family: 'Pacifico', cursive;
     color: #ffffff;
-    margin-bottom: 0.5rem;
     font-size: clamp(1.5rem, 10vw, 2.5rem);
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    padding: 0 10%;
 }
 
 p {
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Pacifico', cursive;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 1.5rem;
     font-size: clamp(0.8rem, 4vw, 1rem);
-    max-width: 80%;
-    line-height: 1.4;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -86,24 +86,7 @@ p {
     animation: pulse 1.5s infinite;
 }
 
-@keyframes pulse {
 
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-}
-
-.welcome-card:hover {
-    transform: scale(1.05);
-    background: radial-gradient(circle, rgba(255, 80, 80, 0.9) 0%, rgba(220, 0, 0, 0.7) 100%);
-}
 
 .welcome-card:active {
     transform: scale(15);
