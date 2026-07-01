@@ -116,6 +116,7 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 0.7rem;
+    perspective: 1500px;
 }
 
 .estante-titulo {
@@ -132,13 +133,17 @@ body {
     flex: 1;
     display: flex;
     flex-direction: row;
-    gap: 12px;
-    padding: 0.7rem 1rem;
-    background: rgba(0,0,0,0.4);
+    gap: 14px;
+    padding: 0.85rem 1.3rem;
+    background: rgba(0, 183, 255, 0.13);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 26px;
+    box-shadow:
+        0 8px 28px rgba(0,0,0,0.65),
+        inset 0 -5px 12px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.12);
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
@@ -156,16 +161,19 @@ body {
     gap: 6px;
     padding: 8px 10px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     outline: none;
+    transform-style: preserve-3d;
+    transform: rotateY(-18deg) rotateX(2deg);
+    transition: transform 0.3s ease, background 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.55);
 }
 
 .cartucho:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.14);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transform: translateX(8px) rotateY(0deg) rotateX(0deg) scale(1.06);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
 }
 
 .cartucho:focus-visible {
@@ -174,10 +182,10 @@ body {
 }
 
 .cartucho.activo {
-    transform: translateY(-8px);
+    transform: translateX(16px) rotateY(0deg) rotateX(0deg);
     background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.35);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.38);
+    box-shadow: 0 6px 26px rgba(0,0,0,0.5);
 }
 
 .cart-icon {
@@ -245,7 +253,7 @@ body {
 
 /* ===== Joy-Cons ===== */
 .joycon {
-    width: 118px;
+    width: 160px;
     flex-shrink: 0;
     position: relative;
 }
@@ -290,10 +298,10 @@ body {
     border: 2px solid rgba(0,0,0,0.5);
     box-shadow: 0 3px 10px rgba(0,0,0,0.6), inset 0 1px 3px rgba(255,255,255,0.1);
 }
-/* Left JC: analog upper-left */
-.joycon-izq .jc-analog-top { top: 11%; left: 14px; }
-/* Right JC: analog lower-right */
-.joycon-der .jc-analog-bot { bottom: 11%; right: 14px; }
+/* Left JC: analog upper-center */
+.joycon-izq .jc-analog-top { top: 11%; left: 50%; transform: translateX(-50%); }
+/* Right JC: analog lower-center */
+.joycon-der .jc-analog-bot { bottom: 11%; left: 50%; transform: translateX(-50%); }
 
 /* Small buttons (minus, capture, plus, home) */
 .jc-sm-btn {
@@ -318,17 +326,18 @@ body {
 .jc-sm-btn:hover { background: rgba(0,0,0,0.55); }
 
 /* Left JC: − and capture to the right of analog */
-.btn-minus   { top: 11%; right: 14px; }
-.btn-capture { top: calc(11% + 30px); right: 14px; font-size: 0.55rem; }
+.btn-minus   { top: 3%; right: 14px; }
+.btn-capture { top: calc(3% + 28px); right: 14px; font-size: 0.55rem; }
 /* Right JC: + and home to the left, mirroring minus/capture */
-.btn-plus    { top: 11%; left: 14px; }
-.btn-home    { top: calc(11% + 30px); left: 14px; font-size: 0.8rem; }
+.btn-plus    { top: 3%; left: 14px; }
+.btn-home    { top: calc(3% + 28px); left: 14px; font-size: 0.8rem; }
 
-/* D-Pad — lower-left of left JC */
+/* D-Pad — lower-center of left JC */
 .dpad {
     position: absolute;
     bottom: 13%;
-    left: 14px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -367,11 +376,12 @@ body {
     background: rgba(0,0,0,0.32);
 }
 
-/* ABXY — upper-right of right JC */
+/* ABXY — upper-center of right JC */
 .abxy {
     position: absolute;
     top: 11%;
-    right: 8px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -513,29 +523,21 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.color-swatches {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.swatch {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+.color-picker {
+    width: 40px;
+    height: 32px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-radius: 8px;
+    padding: 2px;
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.12s, border-color 0.12s;
-    padding: 0;
+    background: none;
     flex-shrink: 0;
+    transition: border-color 0.15s;
 }
-.swatch:hover  { transform: scale(1.25); }
-.swatch.active {
-    border-color: #fff;
-    transform: scale(1.2);
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
-}
+.color-picker:hover { border-color: rgba(255,255,255,0.7); }
+.color-picker::-webkit-color-swatch-wrapper { padding: 0; }
+.color-picker::-webkit-color-swatch { border: none; border-radius: 5px; }
+.color-picker::-moz-color-swatch { border: none; border-radius: 5px; }
 
 .toolbar-sep {
     width: 1px;
@@ -573,14 +575,20 @@ body {
     border-color: #fff;
 }
 
+.btn-xsmall { width: 18px; height: 18px; }
+.btn-xsmall::after { width: 2px; height: 2px; }
+
 .btn-small  { width: 22px; height: 22px; }
-.btn-small::after  { width: 4px; height: 4px; }
+.btn-small::after  { width: 5px; height: 5px; }
 
 .btn-medium { width: 28px; height: 28px; }
-.btn-medium::after { width: 9px; height: 9px; }
+.btn-medium::after { width: 10px; height: 10px; }
 
 .btn-large  { width: 34px; height: 34px; }
-.btn-large::after  { width: 16px; height: 16px; }
+.btn-large::after  { width: 17px; height: 17px; }
+
+.btn-xlarge { width: 40px; height: 40px; }
+.btn-xlarge::after { width: 26px; height: 26px; }
 
 .draw-tool-btn {
     background: rgba(255,255,255,0.12);
@@ -624,6 +632,20 @@ body {
     border-color: rgba(60, 210, 90, 0.5);
 }
 .btn-save:hover { background: rgba(60, 210, 90, 0.35); }
+
+/* ===== Generic full-screen canvas container ===== */
+.game-canvas {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    user-select: none;
+}
+.game-canvas canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+}
 
 /* ===== Flappy Bird Game ===== */
 .game-flappy {
@@ -685,7 +707,7 @@ body {
 @media (max-width: 1024px) {
     body { height: auto; overflow-y: auto; }
     .switch-area { height: 380px; flex: none; }
-    .joycon { width: 90px; }
+    .joycon { width: 120px; }
 }
 
 @media (max-width: 640px) {
@@ -693,6 +715,6 @@ body {
     .navbar-title { order: 1; flex: 1 1 100%; text-align: center; }
     .navbar-links { order: 2; width: 100%; justify-content: center; }
     .switch-area { height: 300px; }
-    .joycon { width: 66px; }
+    .joycon { width: 80px; }
     .flower { display: none; }
 }
